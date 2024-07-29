@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPFinalNivel3FigueroaJuanSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominio\dominio.csproj", "{91395395-674C-42C5-99E6-BBF3EE5B1953}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocio", "negocio\negocio.csproj", "{2F915FB7-66AC-44C3-A93B-150EBEB32193}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "accesoDB", "accesoDB\accesoDB.csproj", "{254199BB-2DD1-4F01-BB21-D39205320515}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{91395395-674C-42C5-99E6-BBF3EE5B1953}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91395395-674C-42C5-99E6-BBF3EE5B1953}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91395395-674C-42C5-99E6-BBF3EE5B1953}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F915FB7-66AC-44C3-A93B-150EBEB32193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F915FB7-66AC-44C3-A93B-150EBEB32193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F915FB7-66AC-44C3-A93B-150EBEB32193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F915FB7-66AC-44C3-A93B-150EBEB32193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{254199BB-2DD1-4F01-BB21-D39205320515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{254199BB-2DD1-4F01-BB21-D39205320515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{254199BB-2DD1-4F01-BB21-D39205320515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{254199BB-2DD1-4F01-BB21-D39205320515}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

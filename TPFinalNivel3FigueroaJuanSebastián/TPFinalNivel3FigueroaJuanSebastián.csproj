@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Error.aspx" />
     <Content Include="FormularioArticulo.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
@@ -74,6 +75,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormularioArticulo.aspx.cs">
       <DependentUpon>FormularioArticulo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

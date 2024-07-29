@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPFinalNivel3FigueroaJuanSebastián", "TPFinalNivel3FigueroaJuanSebastián\TPFinalNivel3FigueroaJuanSebastián.csproj", "{3624F358-4A41-4703-9BC6-A44D1A72C862}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominio\dominio.csproj", "{91395395-674C-42C5-99E6-BBF3EE5B1953}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3624F358-4A41-4703-9BC6-A44D1A72C862}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3624F358-4A41-4703-9BC6-A44D1A72C862}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3624F358-4A41-4703-9BC6-A44D1A72C862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91395395-674C-42C5-99E6-BBF3EE5B1953}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91395395-674C-42C5-99E6-BBF3EE5B1953}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91395395-674C-42C5-99E6-BBF3EE5B1953}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91395395-674C-42C5-99E6-BBF3EE5B1953}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

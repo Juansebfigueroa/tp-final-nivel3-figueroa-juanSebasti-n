@@ -17,7 +17,7 @@ namespace negocio
             AccesoDB accesoDB = new AccesoDB();
             try
             {
-                string consulta = "select Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio from articulos";
+                string consulta = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.IdCategoria, C.Descripcion Categoria, A.IdMarca, M.Descripcion Marca, A.ImagenUrl, A.Precio  from articulos A, Categorias C, Marcas M where A.IdMarca = M.Id AND A.IdCategoria = C.Id";
                 accesoDB.setearConsulta(consulta);
                 accesoDB.ejecutarLectura();
                 while(accesoDB.Lector.Read())

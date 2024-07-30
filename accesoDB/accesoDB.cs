@@ -8,7 +8,7 @@ using System.Configuration;
 
 namespace accesoDB
 {
-    public class accesoDB
+    public class AccesoDB
     {
         //Atributos. Metemos los dos using para que los tome
         private SqlConnection conexion;
@@ -16,7 +16,7 @@ namespace accesoDB
         private SqlDataReader lector;
 
         //Constructor
-        public accesoDB()
+        public AccesoDB()
         {
             conexion = new SqlConnection(ConfigurationManager.AppSettings["cadenaConexion"]);
             //Otra forma de hacer la conexion

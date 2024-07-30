@@ -50,6 +50,10 @@ namespace negocio
 
                 throw;
             }
+            finally
+            {
+                accesoDB.cerrarConexion();
+            }
 
         }
 

@@ -11,8 +11,21 @@
         </div>
         <div class="col">
 
-            <asp:GridView ID="dgvArticulos" CssClass="table" runat="server"></asp:GridView>
+            <asp:GridView ID="dgvArticulos" CssClass="table" runat="server" AutoGenerateColumns="false">
 
+                <Columns>
+                    <asp:BoundField Headertext="Codigo" DataField="Codigo"/>
+                    <asp:BoundField Headertext="Nombre" DataField="Nombre"/>
+                    <asp:BoundField Headertext="Descripcion" DataField="Descripcion"/>
+                    <asp:BoundField Headertext="Categoria" DataField="Categoria.Descripcion"/>
+                    <asp:BoundField Headertext="Marca" DataField="Marca.Descripcion"/>
+                    <asp:BoundField Headertext="Precio" DataField="Precio"/>
+                </Columns>
+
+            </asp:GridView>
+            <div class="col-11">   
+                <a href="FormularioArticulo.aspx" class="btn btn-primary">Agregar</a>
+            </div>
         </div>
         <div class="col">
 

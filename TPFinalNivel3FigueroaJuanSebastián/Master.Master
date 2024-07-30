@@ -23,14 +23,18 @@
                         <div class="navbar-nav">
                             <a class="nav-link active" aria-current="page" href="Home.aspx">Home</a>
                             <a class="nav-link" href="ListadoArticulos.aspx">Lista de Articulos</a>
-                            <a class="nav-link" href="#">Pricing</a>
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                         </div>
                     </div>
                 </div>
             </nav>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+            <!--  pone el siguiente contentPlaceHolder dentro del div para que aplique a todas las paginass y se pueda trabajar con la class col y row-->
+            <div class="container">
+                <hr />
+                <div>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">    
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
         </div>
     </form>
 </body>

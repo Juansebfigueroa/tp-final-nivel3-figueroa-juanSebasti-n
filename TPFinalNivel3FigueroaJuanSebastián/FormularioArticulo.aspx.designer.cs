@@ -105,12 +105,12 @@ namespace TPFinalNivel3FigueroaJuanSebastián
         protected global::System.Web.UI.WebControls.TextBox txtImagenUrl;
 
         /// <summary>
-        /// imgPokemon control.
+        /// imgArticulo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgPokemon;
+        protected global::System.Web.UI.WebControls.Image imgArticulo;
     }
 }

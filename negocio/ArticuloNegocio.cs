@@ -11,13 +11,18 @@ namespace negocio
     public class ArticuloNegocio
     {
 
-        public List<Articulo> listar()
+        public List<Articulo> listar(string id = "")
         {
+            //le agregamos que reciba por parametro un id y le asignamos vacio en caso de que no traiga un id
             List<Articulo> listaArticulos = new List<Articulo>();
             AccesoDB accesoDB = new AccesoDB();
             try
             {
                 string consulta = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.IdCategoria, C.Descripcion Categoria, A.IdMarca, M.Descripcion Marca, A.ImagenUrl, A.Precio  from articulos A, Categorias C, Marcas M where A.IdMarca = M.Id AND A.IdCategoria = C.Id";
+                //Modificamos la consulta en caso de que el metodo traiga un Id. Ahora al ejecutar la consulta la lista nos traerá un solo registro. 
+                if (id != "")
+                    consulta += " AND A.Id = " + id;
+                
                 accesoDB.setearConsulta(consulta);
                 accesoDB.ejecutarLectura();
                 while(accesoDB.Lector.Read())
@@ -84,5 +89,32 @@ namespace negocio
             }
         }
 
+        public void modificarArticulo(Articulo articulo)
+        {
+            AccesoDB acceso = new AccesoDB();
+            try
+            {
+                acceso.setearConsulta("update articulos set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, ImagenUrl = @ImagenUrl, Precio = @Precio where Id = @Id");
+                acceso.setearParametros("@Codigo", articulo.Codigo);
+                acceso.setearParametros("@Nombre", articulo.Nombre);
+                acceso.setearParametros("@Descripcion", articulo.Descripcion);
+                acceso.setearParametros("@IdMarca", articulo.Marca.Id);
+                acceso.setearParametros("@IdCategoria", articulo.Categoria.Id);
+                acceso.setearParametros("@ImagenUrl", articulo.ImagenUrl);
+                acceso.setearParametros("@Precio", articulo.Precio);
+                acceso.setearParametros("@Id", articulo.Id);
+
+                acceso.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally 
+            { 
+                acceso.cerrarConexion();
+            }
+        }
     }
 }

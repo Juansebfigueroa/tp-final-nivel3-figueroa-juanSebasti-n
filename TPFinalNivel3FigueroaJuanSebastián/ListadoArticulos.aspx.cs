@@ -16,5 +16,25 @@ namespace TPFinalNivel3FigueroaJuanSebastián
             dgvArticulos.DataSource = articuloNegocio.listar();
             dgvArticulos.DataBind();
         }
+
+        protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Se genera este evento a partir de la dgvArticulos, donde capturamos el DataKeyNames tambien
+            string id = dgvArticulos.SelectedDataKey.Value.ToString();
+            //Redirigimos al formulario, pero pasando por URL el id
+            Response.Redirect("FormularioArticulo.aspx?id=" + id);
+        }
+
+        protected void dgvArticulos_PageIndexChanged(object sender, EventArgs e)
+        {
+            //Aca me confundi y genere este evento. En la DGV tambien
+        }
+
+        protected void dgvArticulos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvArticulos.PageIndex = e.NewPageIndex;
+            dgvArticulos.DataBind();
+
+        }
     }
 }

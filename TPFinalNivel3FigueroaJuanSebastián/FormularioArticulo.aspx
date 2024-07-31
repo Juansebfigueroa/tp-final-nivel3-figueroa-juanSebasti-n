@@ -53,18 +53,14 @@
             </div>
         </div>
         <div class="col-6">
-           <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">--%>
-                <ContentTemplate>
                     <div class="mb-3">
                         <label for="txtImagenUrl" class="form-label">Url Imagen</label>
                         <asp:TextBox runat="server" ID="txtImagenUrl" CssClass="form-control"
-                            AutoPostBack="true" />
-                        <%--OnTextChanged="txtImagenUrl_TextChanged"--%> 
+                            AutoPostBack="true" OnTextChanged="txtImagenUrl_TextChanged" />
+                        <%-- Le generamos el evento OnTextChanged a la txtImagenUrl y la metemos dentro de un update panel para que cargue la misma en el formulario --%>
                     </div>
                     <asp:Image ImageUrl="https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png"
-                        runat="server" ID="imgPokemon" Width="60%" />
-                </ContentTemplate>
-           <%-- </asp:UpdatePanel>--%>
+                        runat="server" ID="imgArticulo" Width="60%" />
         </div>
 
     </div>

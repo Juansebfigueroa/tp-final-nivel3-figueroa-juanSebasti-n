@@ -34,6 +34,9 @@
             <div class="mb-3">
                 <label for="txtDescripcion" class="form-label"> Descripcion: </label>
                 <asp:TextBox runat="server" ID="txtDescripcion" TextMode="MultiLine" CssClass="form-control" />
+            </div><div class="mb-3">
+                <label for="txtPrecio" class="form-label"> Precio: </label>
+                <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" />
             </div>
             <div class="mb-3">
                 <label for="ddlCategoria" class="form-label">Categoria: </label>
@@ -44,7 +47,7 @@
                 <asp:DropDownList ID="ddlMarca" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
             <div class="mb-3">
-                <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" runat="server" />
+                <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
                 <a href="ListadoArticulos.aspx" class="btn btn-primary">Cancelar</a>
                 <asp:Button Text="Inactivar" ID="btnInactivar" CssClass="btn btn-warning" runat="server" />
             </div>

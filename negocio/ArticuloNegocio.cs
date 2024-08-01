@@ -119,6 +119,8 @@ namespace negocio
 
         public void eliminarFisico(int id)
         {
+            //trabajamos con eliminacion fisica para la app solamente porque el modelo de relacion entidad no trabaja con restricciones, y la eliminacion de articulos no deja a ningun 
+            //registro de ninguna entidad como huerfana. Además, la DB no cuenta con un campo para indicar la inactivacion de un registro.
             AccesoDB acceso = new AccesoDB();
             try
             {

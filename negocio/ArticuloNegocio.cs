@@ -116,5 +116,27 @@ namespace negocio
                 acceso.cerrarConexion();
             }
         }
+
+        public void eliminarFisico(int id)
+        {
+            AccesoDB acceso = new AccesoDB();
+            try
+            {
+                acceso.setearConsulta("delete from Articulos where Id = @Id");
+                acceso.setearParametros("@Id", id);
+
+                acceso.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                acceso.cerrarConexion();
+            }
+        }
     }
 }

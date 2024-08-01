@@ -11,6 +11,8 @@ namespace TPFinalNivel3FigueroaJuanSebastián
 {
     public partial class FormularioArticulo : System.Web.UI.Page
     {
+        public bool ConfirmarEliminacion { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -108,15 +110,36 @@ namespace TPFinalNivel3FigueroaJuanSebastián
 
                 throw ex;
             }
-
-
         }
-
 
         protected void txtImagenUrl_TextChanged(object sender, EventArgs e)
         {
             //a la imagen, le asigno la URL que esta en el txt
             imgArticulo.ImageUrl = txtImagenUrl.Text;
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ConfirmarEliminacion = true;
+        }
+
+        protected void btnConfirmarEliminacion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chbConfirmarEliminacion.Checked)
+                {
+                    ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+                    articuloNegocio.eliminarFisico(int.Parse(txtId.Text));
+                    Response.Redirect("ListadoArticulos.aspx", false);
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
+            }
+
         }
     }
 }

@@ -3,6 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <%-- Agregamos un script manager para usar el update panel --%>
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <h1>Detalles del articulo</h1>
     <!-- 
         public int Id { get; set; }
@@ -32,10 +34,11 @@
                 <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" />
             </div>
             <div class="mb-3">
-                <label for="txtDescripcion" class="form-label"> Descripcion: </label>
+                <label for="txtDescripcion" class="form-label">Descripcion: </label>
                 <asp:TextBox runat="server" ID="txtDescripcion" TextMode="MultiLine" CssClass="form-control" />
-            </div><div class="mb-3">
-                <label for="txtPrecio" class="form-label"> Precio: </label>
+            </div>
+            <div class="mb-3">
+                <label for="txtPrecio" class="form-label">Precio: </label>
                 <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" />
             </div>
             <div class="mb-3">
@@ -53,17 +56,42 @@
             </div>
         </div>
         <div class="col-6">
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
                     <div class="mb-3">
                         <label for="txtImagenUrl" class="form-label">Url Imagen</label>
+
                         <asp:TextBox runat="server" ID="txtImagenUrl" CssClass="form-control"
                             AutoPostBack="true" OnTextChanged="txtImagenUrl_TextChanged" />
                         <%-- Le generamos el evento OnTextChanged a la txtImagenUrl y la metemos dentro de un update panel para que cargue la misma en el formulario --%>
                     </div>
-                    <asp:Image ImageUrl="https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png"
-                        runat="server" ID="imgArticulo" Width="60%" />
+
+                    <div class="mb-3">
+                        <asp:Image ImageUrl="https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png" runat="server" ID="imgArticulo" Width="60%" />
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
+            <%-- metemos los siguiente en un update panel --%>
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+
+                    <div class="mb-6">
+                        <%-- En el evento simplemente cambiara a true la property definida en el back. ConfirmarEliminacion --%>
+                        <asp:Button Text="Eliminar" ID="btnEliminar" CssClass="btn btn-danger" OnClick="btnEliminar_Click" runat="server" />
+                    </div>
+                    <%-- Mostramos condicionalmente los siguientes dos controles segun la propiedad definida en el back--%>
+                    <%  if (ConfirmarEliminacion)
+                        { %>
+                    <div class="mb-6">
+                        <asp:CheckBox Text="Confirmar eliminación" ID="chbConfirmarEliminacion" runat="server" />
+                        <asp:Button Text="Eliminar" ID="btnConfirmarEliminacion" CssClass="btn btn-outline-danger" OnClick="btnConfirmarEliminacion_Click" runat="server" />
+                    </div>
+                    <% } %>
+
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
         </div>
-
-    </div>
-
-
+</div>
 </asp:Content>

@@ -51,8 +51,14 @@
             </div>
             <div class="mb-3">
                 <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
-                <a href="ListadoArticulos.aspx" class="btn btn-primary">Cancelar</a>
-                <asp:Button Text="Inactivar" ID="btnInactivar" CssClass="btn btn-warning" runat="server" />
+                <%if (negocio.Seguridad.isAdmin((dominio.User)Session["usuario"]))
+                    {%> 
+                    <a href="ListadoArticulos.aspx" class="btn btn-primary">Cancelar</a>
+                <% }
+                    else{ %>
+                    <a href="Home.aspx" class="btn btn-primary">Cancelar</a>
+                <%} %>
+
             </div>
         </div>
         <div class="col-6">

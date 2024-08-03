@@ -11,25 +11,34 @@ namespace TPFinalNivel3FigueroaJuanSebastián
 {
 
 
-    public partial class Error
+    public partial class Registro
     {
 
         /// <summary>
-        /// lblError control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// btnCerrarSesion control.
+        /// txtPass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCerrarSesion;
+        protected global::System.Web.UI.WebControls.TextBox txtPass;
+
+        /// <summary>
+        /// btnRegistrarse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRegistrarse;
     }
 }

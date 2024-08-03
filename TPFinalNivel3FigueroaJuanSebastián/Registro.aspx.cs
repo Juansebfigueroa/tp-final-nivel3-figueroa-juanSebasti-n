@@ -7,17 +7,17 @@ using System.Web.UI.WebControls;
 
 namespace TPFinalNivel3FigueroaJuanSebastián
 {
-    public partial class Error : System.Web.UI.Page
+    public partial class Registro : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblError.Text = Session["error"].ToString();
+            
+
         }
 
-        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        protected void btnRegistrarse_Click(object sender, EventArgs e)
         {
-            Session.Clear();
-            Response.Redirect("Login.aspx");
+
         }
     }
 }

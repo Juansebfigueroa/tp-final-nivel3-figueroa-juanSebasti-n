@@ -22,21 +22,33 @@
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <a class="nav-link active" aria-current="page" href="Home.aspx">Home</a>
-                            <a class="nav-link" href="ListadoArticulos.aspx">Lista de Articulos</a>
+                            
+                            <%if (negocio.Seguridad.isAdmin((dominio.User)Session["usuario"]))
+                                    {
+                                    %> 
+                                <a class="nav-link" href="ListadoArticulos.aspx">Lista de Articulos</a>
+                            <%}
+                              if (negocio.Seguridad.sesionActiva((dominio.User)Session["usuario"]))
+                                {
+                                %>
+                            <a class="nav-link" href="MiPerfil.aspx">Mi Perfil</a>
+                            <%} %>
                         </div>
                     </div>
 
                     <div class="d-flex">
-                    <%// if (!negocio.Seguridad.sesionActiva(Session["trainee"])){ %>
+                    <% //Aca me saltaba error porque tenia la clase seguridad como publica solamente, y queria usar el metodo sin instanciar un objeto. AHora uqe la cambie a static ya puedo
+                        if (!negocio.Seguridad.sesionActiva(Session["usuario"])){ %>
                             <a href="Login.aspx" class="btn btn-success me-2">Login</a>
-                            <%--<a href="Registro.aspx" class="btn btn-outline-primary m-auto">Registrarse</a>--%>
-                    <%--<%
-                      // }
-                      // else {
+                            <a href="Registro.aspx" class="btn btn-outline-primary m-auto">Registrarse</a>
+                    <%
+                        }
+                        else
+                        {
                     %>
                             <asp:Button Text="Salir" ID="btnSalir" cssclass="btn btn-outline-primary me-2" OnClick="btnSalir_Click" runat="server" />
                             <asp:Label id="lblUser" Text="user" CssClass="text-light m-auto me-2" runat="server" />
-                    <%} %>--%>
+                    <%} %>
                     <asp:Image ID="imgAvatar" style="height:40px; width:40px; border-radius:50%;" runat="server" />
                 </div>
 
@@ -52,5 +64,8 @@
             </div>
         </div>
     </form>
+    
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>

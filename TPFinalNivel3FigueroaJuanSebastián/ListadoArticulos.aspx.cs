@@ -12,6 +12,11 @@ namespace TPFinalNivel3FigueroaJuanSebastián
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!(Seguridad.isAdmin((dominio.User)Session["usuario"])))
+            {
+                Session.Add("error", "Debes ser admin para ver la lista de productos");
+                Response.Redirect("error.aspx", false);
+            }
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             dgvArticulos.DataSource = articuloNegocio.listar();
             dgvArticulos.DataBind();

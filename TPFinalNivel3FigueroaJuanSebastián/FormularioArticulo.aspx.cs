@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using dominio;
 
 namespace TPFinalNivel3FigueroaJuanSebastián
 {
@@ -103,7 +104,10 @@ namespace TPFinalNivel3FigueroaJuanSebastián
                 //ver alguna forma de dar confirmacion de agregado exitoso
                 //Esta funciona, pero si pongo el redirect deja de mostrarse
                 //ClientScript.RegisterStartupScript(this.GetType(), "Exito", "alert('Se agregó exitosamente el producto.');", true);
-                Response.Redirect("ListadoArticulos.aspx", false);
+                if (Seguridad.isAdmin((User)Session["usuario"]))
+                    Response.Redirect("ListadoArticulos.aspx", false);
+                else
+                    Response.Redirect("Home.aspx");
             }
             catch (Exception ex)
             {

@@ -33,17 +33,17 @@ namespace negocio
                     //public bool Admin { get; set; }
 
                     User aux = new User();
-                    aux.Id = (int)acceso.Lector["Id"];
-                    aux.Email = (string)acceso.Lector["email"];
-                    aux.Pass = (string)acceso.Lector["pass"];
+                    user.Id = (int)acceso.Lector["Id"];
+                    user.Email = (string)acceso.Lector["email"];
+                    user.Pass = (string)acceso.Lector["pass"];
                     if (!(acceso.Lector["nombre"] is DBNull))
-                        aux.Nombre = (string)acceso.Lector["nombre"];
+                        user.Nombre = (string)acceso.Lector["nombre"];
                     if (!(acceso.Lector["apellido"] is DBNull))
-                        aux.Apellido = (string)acceso.Lector["apellido"];
+                        user.Apellido = (string)acceso.Lector["apellido"];
                     if (!(acceso.Lector["urlImagenPerfil"] is DBNull))
-                        aux.UrlImagenPerfil = (string)acceso.Lector["urlImagenPerfil"];
+                        user.UrlImagenPerfil = (string)acceso.Lector["urlImagenPerfil"];
                     if (!(acceso.Lector["admin"] is DBNull)) 
-                        aux.Admin = (bool)acceso.Lector["admin"];
+                        user.Admin = (bool)acceso.Lector["admin"];
 
                     return true;
                 }

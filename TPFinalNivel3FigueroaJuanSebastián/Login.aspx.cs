@@ -13,7 +13,11 @@ namespace TPFinalNivel3FigueroaJuanSebastián
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["usuario"] != null)
+            {
+                Session.Add("error", "Debes cerrar sesion si quieres ingresar con otra cuenta");
+                Response.Redirect("error.aspx");
+            }
         }
 
         protected void btnLogin_Click1(object sender, EventArgs e)

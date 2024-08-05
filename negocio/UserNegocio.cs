@@ -63,5 +63,29 @@ namespace negocio
             }
         }
 
+        public void ModificarDatos(User usuario)
+        {
+            AccesoDB accesoDB = new AccesoDB();
+            try
+            {
+                accesoDB.setearConsulta("update Users set nombre = @Nombre, apellido = @Apellido, urlImagenPerfil = @UrlImagen where Id = @Id");
+                accesoDB.setearParametros("@Nombre", usuario.Nombre);
+                accesoDB.setearParametros("@Apellido", usuario.Apellido);
+                accesoDB.setearParametros("@UrlImagen", usuario.UrlImagenPerfil);
+                accesoDB.setearParametros("@Id", usuario.Id);
+                accesoDB.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDB.cerrarConexion();
+            }
+
+
+        }
     }
 }

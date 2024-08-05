@@ -50,15 +50,16 @@
                 <asp:DropDownList ID="ddlMarca" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
             <div class="mb-3">
-                <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
                 <%if (negocio.Seguridad.isAdmin((dominio.User)Session["usuario"]))
-                    {%> 
-                    <a href="ListadoArticulos.aspx" class="btn btn-primary">Cancelar</a>
+                    {%>
+                <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
+                <a href="ListadoArticulos.aspx" class="btn btn-primary">Cancelar</a>
                 <% }
-                    else{ %>
-                    <a href="Home.aspx" class="btn btn-primary">Cancelar</a>
+                    else
+                    { %>
+                <a href="Home.aspx" class="btn btn-primary">Aceptar</a>
+                <a href="Home.aspx" class="btn btn-primary">Cancelar</a>
                 <%} %>
-
             </div>
         </div>
         <div class="col-6">
@@ -81,7 +82,8 @@
             <%-- metemos los siguiente en un update panel --%>
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
-
+                    <%if (negocio.Seguridad.isAdmin((dominio.User)Session["usuario"]))
+                        {%>
                     <div class="mb-6">
                         <%-- En el evento simplemente cambiara a true la property definida en el back. ConfirmarEliminacion --%>
                         <asp:Button Text="Eliminar" ID="btnEliminar" CssClass="btn btn-danger" OnClick="btnEliminar_Click" runat="server" />
@@ -95,9 +97,11 @@
                     </div>
                     <% } %>
 
+
+                    <% }%>
                 </ContentTemplate>
             </asp:UpdatePanel>
 
         </div>
-</div>
+    </div>
 </asp:Content>

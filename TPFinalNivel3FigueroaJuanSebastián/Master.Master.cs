@@ -13,8 +13,14 @@ namespace TPFinalNivel3FigueroaJuanSebastián
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            imgAvatar.ImageUrl = "https://simg.nicepng.com/png/small/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png";
-            
+            if (Session["usuario"] == null)
+                imgAvatar.ImageUrl = "https://simg.nicepng.com/png/small/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png";
+            else
+            {
+                imgAvatar.ImageUrl = ((dominio.User)Session["usuario"]).UrlImagenPerfil;
+                lblUser.Text = ((dominio.User)Session["usuario"]).Nombre;
+            }
+
             //agrgamos unas excepciones a la carga de paginas porque, sino, se hace un loop
             //y tira error al tratar de validar si hay un usuario en sessiony quiere redirigir a una pagina en donde vuelve a validar. 
             

@@ -6,17 +6,17 @@
     <div class="container text-center">
         <div class="row">
             <div class="col">
-                Column
+                
             </div>
             <div class="col">
-                Digital Market
+                <h1>Digital Market</h1>
             </div>
             <div class="col">
-                Column
+                
             </div>
         </div>
         <div class="row">
-            <div class="col-3">
+            <div class="col-6">
                 <p>Tu tienda digital de confianza</p>
             </div>
         </div>

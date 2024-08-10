@@ -18,6 +18,7 @@ namespace TPFinalNivel3FigueroaJuanSebastián
                 Response.Redirect("error.aspx", false);
             }
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            
             dgvArticulos.DataSource = articuloNegocio.listar();
             dgvArticulos.DataBind();
         }
@@ -40,6 +41,26 @@ namespace TPFinalNivel3FigueroaJuanSebastián
             dgvArticulos.PageIndex = e.NewPageIndex;
             dgvArticulos.DataBind();
 
+        }
+
+        protected void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+             
         }
     }
 }

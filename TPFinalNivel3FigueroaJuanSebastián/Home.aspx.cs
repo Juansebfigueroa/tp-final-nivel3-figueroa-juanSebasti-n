@@ -17,6 +17,26 @@ namespace TPFinalNivel3FigueroaJuanSebastián
 		{
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             listaArticulos = articuloNegocio.listar();
+
+			////Guardamos esa listaArticulos en session para manejarla mejor
+			//Session.Add("listaArticulos", listaArticulos);
+			
+			//Carga de los ddl para el filtro
+			CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+			MarcaNegocio marcaNegocio = new MarcaNegocio();
+			ddlCategoria.DataSource = categoriaNegocio.listar();
+			ddlCategoria.DataValueField = "Id";
+			ddlCategoria.DataTextField = "Descripcion";
+			ddlCategoria.DataBind();
+			ddlMarca.DataSource = marcaNegocio.listar();
+			ddlMarca.DataValueField = "Id";
+			ddlMarca.DataTextField = "Descripcion";
+			ddlMarca.DataBind();
         }
-	}
+
+        protected void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

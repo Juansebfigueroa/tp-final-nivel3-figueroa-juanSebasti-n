@@ -6,18 +6,6 @@
     <%-- Agregamos un script manager para usar el update panel --%>
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <h1>Detalles del articulo</h1>
-    <!-- 
-        public int Id { get; set; }
-        public string Codigo { get; set; }
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        
-        //Fijarse si trabajar marca y categoria como un objeto o solo ID int
-        public Marca Marca { get; set; }
-        public Categoria Categoria { get; set; }
-        public string ImagenUrl { get; set; }
-        public decimal Precio { get; set; }
-        -->
 
     <div class="row">
         <div class="col-6">

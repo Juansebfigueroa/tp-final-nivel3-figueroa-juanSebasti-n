@@ -140,5 +140,20 @@ namespace negocio
                 acceso.cerrarConexion();
             }
         }
+
+        //public List<Articulo> filtrar(string categoria, string marca, )
+        //{
+        //    List<Articulo> listaFiltrada = new List<Articulo>();
+        //    AccesoDB accesoDB = new AccesoDB();
+        //    string consulta = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.IdCategoria, C.Descripcion Categoria, A.IdMarca, M.Descripcion Marca, A.ImagenUrl, A.Precio from articulos A, Categorias C, Marcas M where A.IdMarca = M.Id AND A.IdCategoria = C.Id ";
+            
+        //    if()
+            
+        //    accesoDB.setearConsulta(consulta);
+        //    accesoDB.setearParametros();
+        //    accesoDB.setearParametros();
+        //    accesoDB.setearParametros();
+        //    return listaFiltrada;
+        //}
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using dominio;
 using accesoDB;
+using System.Diagnostics.Eventing.Reader;
 
 namespace negocio
 {
@@ -86,6 +87,27 @@ namespace negocio
             }
 
 
+        }
+
+        public void AgregarUsuario(User usuario)
+        {
+            AccesoDB accesoDB = new AccesoDB();
+            try
+            {
+                accesoDB.setearConsulta("insert into USERS (email, pass) values (@Email, @Pass)");
+                accesoDB.setearParametros("@Email", usuario.Email);
+                accesoDB.setearParametros("@Pass", usuario.Pass);
+                accesoDB.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDB.cerrarConexion();
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using dominio;
 using accesoDB;
+using System.Linq.Expressions;
 
 namespace negocio
 {
@@ -141,19 +142,107 @@ namespace negocio
             }
         }
 
-        //public List<Articulo> filtrar(string categoria, string marca, )
-        //{
-        //    List<Articulo> listaFiltrada = new List<Articulo>();
-        //    AccesoDB accesoDB = new AccesoDB();
-        //    string consulta = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.IdCategoria, C.Descripcion Categoria, A.IdMarca, M.Descripcion Marca, A.ImagenUrl, A.Precio from articulos A, Categorias C, Marcas M where A.IdMarca = M.Id AND A.IdCategoria = C.Id ";
+        public List<Articulo> filtrar(string categoria, string marca, decimal precioMin = 0, decimal precioMax = 0)
+        {
+            List<Articulo> listaFiltrada = new List<Articulo>();
+            AccesoDB accesoDB = new AccesoDB();
+            string consulta = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.IdCategoria, C.Descripcion Categoria, A.IdMarca, M.Descripcion Marca, A.ImagenUrl, A.Precio from articulos A, Categorias C, Marcas M where A.IdMarca = M.Id AND A.IdCategoria = C.Id";
+
+            //los condicionales los establecemos con lo que recibimos por parametros.
+            //Validamos que se haya elegido una categoria especifica o introducido un precio distinto a 0 para aplicar el filtro a la consulta
+            try
+            {
+                if (categoria != "Todas")
+                {
+                    consulta += " AND C.Descripcion = ";
+                    switch (categoria)
+                    {
+                        case "Celulares":
+                            consulta += "'Celulares'";
+                            break;
+                        case "Televisores":
+                            consulta += "'Televisores'";
+                            break;
+                        case "Media":
+                            consulta += "'Media'";
+                            break;
+                        case "Audio":
+                            consulta += "'Audio'";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (marca != "Todas")
+                {
+                    consulta += " AND M.Descripcion = ";
+                    switch (marca)
+                    {
+                        case "Samsung":
+                            consulta += "'Samsung'";
+                            break;
+                        case "Apple":
+                            consulta += "'Apple'";
+                            break;
+                        case "Sony":
+                            consulta += "'Sony'";
+                            break;
+                        case "Huawei":
+                            consulta += "'Huawei'";
+                            break;
+                        case "Motorola":
+                            consulta += "'Motorola'";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (precioMin != 0 &&  precioMax == 0)
+                {
+                    consulta += " AND A.Precio >= " + precioMin;
+                }
+                if (precioMin != 0 && precioMax != 0)
+                {
+                    consulta += " AND A.Precio BETWEEN " + precioMin + " AND " + precioMax;
+                }
+                if(precioMin == 0 && precioMax != 0)
+                {
+                    consulta += " AND A.Precio <= " + precioMax;
+                }
             
-        //    if()
-            
-        //    accesoDB.setearConsulta(consulta);
-        //    accesoDB.setearParametros();
-        //    accesoDB.setearParametros();
-        //    accesoDB.setearParametros();
-        //    return listaFiltrada;
-        //}
+                accesoDB.setearConsulta(consulta);
+                accesoDB.ejecutarLectura();
+
+                while(accesoDB.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+
+                    aux.Id = (int)accesoDB.Lector["Id"];
+                    aux.Codigo = (string)accesoDB.Lector["Codigo"];
+                    aux.Nombre = (string)accesoDB.Lector["Nombre"];
+                    aux.Descripcion = (string)accesoDB.Lector["Descripcion"];
+
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Id = (int)accesoDB.Lector["IdCategoria"];
+                    aux.Categoria.Descripcion = (string)accesoDB.Lector["Categoria"];
+
+                    aux.Marca = new Marca();
+                    aux.Marca.Id = (int)accesoDB.Lector["IdMarca"];
+                    aux.Marca.Descripcion = (string)accesoDB.Lector["Marca"];
+
+                    aux.ImagenUrl = (string)accesoDB.Lector["ImagenUrl"];
+                    aux.Precio = (decimal)accesoDB.Lector["Precio"];
+
+                    //añadir el aux a la lista filtrada
+                    listaFiltrada.Add(aux);
+                }
+                return listaFiltrada;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

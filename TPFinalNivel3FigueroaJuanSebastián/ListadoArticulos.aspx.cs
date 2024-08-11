@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using dominio;
 using negocio;
 
 namespace TPFinalNivel3FigueroaJuanSebastián
@@ -18,9 +19,32 @@ namespace TPFinalNivel3FigueroaJuanSebastián
                 Response.Redirect("error.aspx", false);
             }
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-            
+
             dgvArticulos.DataSource = articuloNegocio.listar();
             dgvArticulos.DataBind();
+            //carga de los ddl para el filtrado
+            CategoriaNegocio categoriaNeg = new CategoriaNegocio();
+            MarcaNegocio marcaNeg = new MarcaNegocio();
+
+            if (!(IsPostBack))
+            {
+                ddlCategoria.DataSource = categoriaNeg.listar();
+                ddlCategoria.DataValueField = "Id";
+                ddlCategoria.DataTextField = "Descripcion";
+                ddlCategoria.DataBind();
+
+                //Agregamos la opcion "Todas" a los dll para que el filtro no se aplique. El metodo Insert() espera un indice y un objeto de tipo ListItem, entonces instanciamos
+                //dicho objeto, y le pasamos por constructor un text y un valor. 
+                ddlCategoria.Items.Insert(0, new ListItem("Todas", "0"));
+
+                ddlMarca.DataSource = marcaNeg.listar();
+                ddlMarca.DataValueField = "Id";
+                ddlMarca.DataTextField = "Descripcion";
+                ddlMarca.DataBind();
+
+                //Hacemos lo mismo para el ddlMarca
+                ddlMarca.Items.Insert(0, new ListItem("Todas", "0"));
+            }
         }
 
         protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,7 +84,30 @@ namespace TPFinalNivel3FigueroaJuanSebastián
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-             
+            try
+            {
+                string categoria = ddlCategoria.SelectedItem.Text;
+                string marca = ddlMarca.SelectedItem.Text;
+                decimal precioMin = 0;
+                decimal precioMax = 0;
+                if (txtPrecioMinimo.Text != "")
+                {
+                    precioMin = decimal.Parse((txtPrecioMinimo.Text.ToString()));
+                }
+                if (txtPrecioMaximo.Text != "")
+                {
+                    precioMax = decimal.Parse((txtPrecioMaximo.Text.ToString()));
+                }
+                ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+                List<Articulo> listaFiltrada = articuloNegocio.filtrar(categoria, marca, precioMin, precioMax);
+                dgvArticulos.DataSource = listaFiltrada;
+                dgvArticulos.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

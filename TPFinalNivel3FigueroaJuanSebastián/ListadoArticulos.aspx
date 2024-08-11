@@ -39,14 +39,13 @@
             </div>
             <div class="col-3">
                 <div class="mb-3">
-                    <asp:Label Text="Precio" runat="server" />
-                    <asp:Label Text="Minimo" runat="server" />
+                    <asp:Label Text="Precio mínimo" runat="server" />
                     <asp:TextBox runat="server" ID="txtPrecioMinimo" CssClass="form-control" />
                 </div>
             </div>
             <div class="col-3">
                 <div class="mb-3">
-                    <asp:Label Text="Máximo" runat="server" />
+                    <asp:Label Text="Precio máximo" runat="server" />
                     <asp:TextBox runat="server" ID="txtPrecioMaximo" CssClass="form-control" />
                 </div>
 

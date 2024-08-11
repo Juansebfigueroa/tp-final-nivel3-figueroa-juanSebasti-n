@@ -28,10 +28,17 @@ namespace TPFinalNivel3FigueroaJuanSebastián
 			ddlCategoria.DataValueField = "Id";
 			ddlCategoria.DataTextField = "Descripcion";
 			ddlCategoria.DataBind();
-			ddlMarca.DataSource = marcaNegocio.listar();
+            //Agregamos la opcion "todas"
+            ddlCategoria.Items.Insert(0, new ListItem("Todas", "0"));
+
+            ddlMarca.DataSource = marcaNegocio.listar();
 			ddlMarca.DataValueField = "Id";
 			ddlMarca.DataTextField = "Descripcion";
 			ddlMarca.DataBind();
+			//Agregamos la opcion "todas"
+            ddlMarca.Items.Insert(0, new ListItem("Todas", "0"));
+
+
         }
 
         protected void txtNombre_TextChanged(object sender, EventArgs e)

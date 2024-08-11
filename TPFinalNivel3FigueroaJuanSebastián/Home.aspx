@@ -22,18 +22,25 @@
             <div class="col-3">
                 <h1>¿Qué estás buscando?</h1>
                 <p>Ingresa los datos del artículo que necesites para filtrar los resultados:</p>
+                <div class="row">
                 <label>Nombre:</label>
                 <asp:TextBox ID="txtNombre" OnTextChanged="txtNombre_TextChanged" runat="server" />
+                </div>
+                <div class="row">
                 <label>Categoria:</label>
                 <asp:DropDownList ID="ddlCategoria" CssClass="form-label" runat="server"></asp:DropDownList>
+                </div>
+                <div class="row">
                 <label>Marca:</label>
                 <asp:DropDownList ID="ddlMarca" CssClass="form-label" runat="server"></asp:DropDownList>
+                </div>
+                <div class="row">
                 <label>Precio:</label>
+                </div>
                 <label>Minimo:</label>
                 <asp:TextBox ID="txtPrecioMinimo" runat="server" />  
                 <label>Máximo:</label>
                 <asp:TextBox ID="txtPrecioMaximo" runat="server" /> 
-                <hr />
                 <asp:Button Text="Filtrar" ID="btnFiltrar" CssClass="btn btn-primary" runat="server" />
             </div>
             <div class="col">

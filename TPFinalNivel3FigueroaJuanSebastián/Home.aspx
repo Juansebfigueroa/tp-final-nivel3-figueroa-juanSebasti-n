@@ -41,7 +41,8 @@
                 <asp:TextBox ID="txtPrecioMinimo" runat="server" />  
                 <label>Máximo:</label>
                 <asp:TextBox ID="txtPrecioMaximo" runat="server" /> 
-                <asp:Button Text="Filtrar" ID="btnFiltrar" CssClass="btn btn-primary" runat="server" />
+                <asp:Button Text="Filtrar" ID="btnFiltrar" CssClass="btn btn-primary" OnClick="btnFiltrar_Click" runat="server" />
+                <asp:Button Text="Reestablecer" ID="btnReestablecer" CssClass="btn btn-warning" OnClick="btnReestablecer_Click" runat="server" />
             </div>
             <div class="col">
                 <hr />

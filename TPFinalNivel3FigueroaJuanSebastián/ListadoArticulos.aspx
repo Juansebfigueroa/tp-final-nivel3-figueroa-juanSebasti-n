@@ -49,11 +49,14 @@
                     <asp:TextBox runat="server" ID="txtPrecioMaximo" CssClass="form-control" />
                 </div>
 
+
                 <div class="col-3">
                     <div class="mb-3">
                         <asp:Button Text="Buscar" runat="server" CssClass="btn btn-primary" ID="btnBuscar" OnClick="btnBuscar_Click" />
+                        <asp:Button Text="Reestablecer" CssClass="btn btn-warning" ID="btnReestablecer" OnClick="btnReestablecer_Click" runat="server" />
                     </div>
                 </div>
+
             </div>
         </div>
 

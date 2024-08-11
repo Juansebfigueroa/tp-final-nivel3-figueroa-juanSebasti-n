@@ -109,5 +109,13 @@ namespace TPFinalNivel3FigueroaJuanSebastián
                 throw ex;
             }
         }
+
+        protected void btnReestablecer_Click(object sender, EventArgs e)
+        {
+            ddlCategoria.SelectedIndex = 0;
+            ddlMarca.SelectedIndex = 0;
+            txtPrecioMaximo.Text = string.Empty;
+            txtPrecioMinimo.Text = string.Empty;
+        }
     }
 }

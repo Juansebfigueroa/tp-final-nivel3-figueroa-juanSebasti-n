@@ -86,5 +86,21 @@ namespace TPFinalNivel3FigueroaJuanSebastián
                 throw ex;
             }
         }
+
+        protected void AgregarAFavoritos_Click(object sender, EventArgs e)
+        {
+            if (Session["usuario"] == null)
+            {
+                Session.Add("Error", "Debes ingresar con tu usuario para agregar el artículo a tus favoritos");
+                Response.Redirect("Error.aspx");
+            }
+            
+            //Dado que este evento puede ser disparado por varios btn, debemos capturar el ID del articulo de la tarjeta que lo disparó
+            Button btnFavorito = (Button)sender;
+            //El btnFavorito tiene asociado un CommandArgument que le indicamos en el Front.
+            //Este CommandArgument contiene el Id del articulo que esta listado en la tarjeta.
+            int IdArticulo = int.Parse(btnFavorito.CommandArgument);
+            User usuario = (User)Session["usuario"];
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="TPFinalNivel3FigueroaJuanSebastián.Home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="">
@@ -23,24 +24,24 @@
                 <h1>¿Qué estás buscando?</h1>
                 <p>Ingresa los datos del artículo que necesites para filtrar los resultados:</p>
                 <div class="row">
-                <label>Nombre:</label>
-                <asp:TextBox ID="txtNombre" OnTextChanged="txtNombre_TextChanged" runat="server" />
+                    <label>Nombre:</label>
+                    <asp:TextBox ID="txtNombre" OnTextChanged="txtNombre_TextChanged" runat="server" />
                 </div>
                 <div class="row">
-                <label>Categoria:</label>
-                <asp:DropDownList ID="ddlCategoria" CssClass="form-label" runat="server"></asp:DropDownList>
+                    <label>Categoria:</label>
+                    <asp:DropDownList ID="ddlCategoria" CssClass="form-label" runat="server"></asp:DropDownList>
                 </div>
                 <div class="row">
-                <label>Marca:</label>
-                <asp:DropDownList ID="ddlMarca" CssClass="form-label" runat="server"></asp:DropDownList>
+                    <label>Marca:</label>
+                    <asp:DropDownList ID="ddlMarca" CssClass="form-label" runat="server"></asp:DropDownList>
                 </div>
                 <div class="row">
-                <label>Precio:</label>
+                    <label>Precio:</label>
                 </div>
                 <label>Minimo:</label>
-                <asp:TextBox ID="txtPrecioMinimo" runat="server" />  
+                <asp:TextBox ID="txtPrecioMinimo" runat="server" />
                 <label>Máximo:</label>
-                <asp:TextBox ID="txtPrecioMaximo" runat="server" /> 
+                <asp:TextBox ID="txtPrecioMaximo" runat="server" />
                 <asp:Button Text="Filtrar" ID="btnFiltrar" CssClass="btn btn-primary" OnClick="btnFiltrar_Click" runat="server" />
                 <asp:Button Text="Reestablecer" ID="btnReestablecer" CssClass="btn btn-warning" OnClick="btnReestablecer_Click" runat="server" />
             </div>
@@ -54,6 +55,7 @@
                         foreach (dominio.Articulo art in listaArticulos)
                         {%>
                     <div class="card" style="width: 18rem;">
+
                         <!-- metemos la img dentro de un div y le mandamos la clase ratio para que sea cuadrada -->
                         <div class="ratio ratio-1x1">
                             <img src="<%: art.ImagenUrl %> " class="card-img-top" alt="...">

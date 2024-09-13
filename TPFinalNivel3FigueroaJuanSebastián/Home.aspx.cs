@@ -50,6 +50,7 @@ namespace TPFinalNivel3FigueroaJuanSebastián
 
         protected void btnReestablecer_Click(object sender, EventArgs e)
         {
+            txtNombre.Text = "";
             ddlCategoria.SelectedIndex = 0;
             ddlMarca.SelectedIndex = 0;
             txtPrecioMaximo.Text = string.Empty;
@@ -62,6 +63,8 @@ namespace TPFinalNivel3FigueroaJuanSebastián
         {
             try
             {
+                //agrego el nombre al filtro que me olvidé
+                string nombre = txtNombre.Text;
                 string categoria = ddlCategoria.SelectedItem.Text;
                 string marca = ddlMarca.SelectedItem.Text;
                 decimal precioMin = 0;
@@ -75,7 +78,7 @@ namespace TPFinalNivel3FigueroaJuanSebastián
                     precioMax = decimal.Parse((txtPrecioMaximo.Text.ToString()));
                 }
                 ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-                List<Articulo> listaFiltrada = articuloNegocio.filtrar(categoria, marca, precioMin, precioMax);
+                List<Articulo> listaFiltrada = articuloNegocio.filtrar(nombre, categoria, marca, precioMin, precioMax);
                
                 //le cargamos a la property listaFiltrada que usan las cards de home desde el front. 
                 listaArticulos = listaFiltrada;

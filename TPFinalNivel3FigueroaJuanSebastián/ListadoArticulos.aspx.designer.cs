@@ -24,6 +24,33 @@ namespace TPFinalNivel3FigueroaJuanSebastián
         protected global::System.Web.UI.WebControls.TextBox txtFiltro;
 
         /// <summary>
+        /// cbFiltroAvanzado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbFiltroAvanzado;
+
+        /// <summary>
+        /// btnReestablecer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReestablecer;
+
+        /// <summary>
+        /// txtNombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNombre;
+
+        /// <summary>
         /// ddlCategoria control.
         /// </summary>
         /// <remarks>
@@ -67,15 +94,6 @@ namespace TPFinalNivel3FigueroaJuanSebastián
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBuscar;
-
-        /// <summary>
-        /// btnReestablecer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReestablecer;
 
         /// <summary>
         /// dgvArticulos control.

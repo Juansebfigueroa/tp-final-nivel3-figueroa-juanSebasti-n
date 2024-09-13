@@ -142,7 +142,7 @@ namespace negocio
             }
         }
 
-        public List<Articulo> filtrar(string categoria, string marca, decimal precioMin = 0, decimal precioMax = 0)
+        public List<Articulo> filtrar(string nombre, string categoria, string marca, decimal precioMin = 0, decimal precioMax = 0)
         {
             List<Articulo> listaFiltrada = new List<Articulo>();
             AccesoDB accesoDB = new AccesoDB();
@@ -152,6 +152,10 @@ namespace negocio
             //Validamos que se haya elegido una categoria especifica o introducido un precio distinto a 0 para aplicar el filtro a la consulta
             try
             {
+                if (nombre != "")
+                {
+                    consulta += " AND A.Nombre like '%" + nombre + "%'";
+                }
                 if (categoria != "Todas")
                 {
                     consulta += " AND C.Descripcion = ";
@@ -242,6 +246,57 @@ namespace negocio
             {
 
                 throw ex;
+            }
+        }
+
+        public List<Articulo> filtroRapido(string nombre)
+        {
+            List<Articulo> listaFiltrada = new List<Articulo>();
+            AccesoDB accesoDB = new AccesoDB();
+            string consulta = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.IdCategoria, C.Descripcion Categoria, A.IdMarca, M.Descripcion Marca, A.ImagenUrl, A.Precio from articulos A, Categorias C, Marcas M where A.IdMarca = M.Id AND A.IdCategoria = C.Id";
+
+            if(nombre != "")
+            {
+                consulta += " AND A.Nombre like '%" + nombre + "%'";
+            }
+
+            try
+            {
+                accesoDB.setearConsulta(consulta);
+                accesoDB.ejecutarLectura();
+                while (accesoDB.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+
+                    aux.Id = (int)accesoDB.Lector["Id"];
+                    aux.Codigo = (string)accesoDB.Lector["Codigo"];
+                    aux.Nombre = (string)accesoDB.Lector["Nombre"];
+                    aux.Descripcion = (string)accesoDB.Lector["Descripcion"];
+
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Id = (int)accesoDB.Lector["IdCategoria"];
+                    aux.Categoria.Descripcion = (string)accesoDB.Lector["Categoria"];
+
+                    aux.Marca = new Marca();
+                    aux.Marca.Id = (int)accesoDB.Lector["IdMarca"];
+                    aux.Marca.Descripcion = (string)accesoDB.Lector["Marca"];
+
+                    aux.ImagenUrl = (string)accesoDB.Lector["ImagenUrl"];
+                    aux.Precio = (decimal)accesoDB.Lector["Precio"];
+
+                    //añadir el aux a la lista filtrada
+                    listaFiltrada.Add(aux);
+                }
+                return listaFiltrada;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                accesoDB.cerrarConexion();
             }
         }
     }

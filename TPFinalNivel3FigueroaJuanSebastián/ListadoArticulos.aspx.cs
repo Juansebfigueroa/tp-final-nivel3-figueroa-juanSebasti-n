@@ -13,6 +13,10 @@ namespace TPFinalNivel3FigueroaJuanSebastián
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(cbFiltroAvanzado.Checked)
+                txtFiltro.Enabled = false;
+            else
+                txtFiltro.Enabled = true;
             if (!(Seguridad.isAdmin((dominio.User)Session["usuario"])))
             {
                 Session.Add("error", "Debes ser admin para ver la lista de productos");
@@ -69,7 +73,30 @@ namespace TPFinalNivel3FigueroaJuanSebastián
 
         protected void txtFiltro_TextChanged(object sender, EventArgs e)
         {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            if(txtFiltro.Text.Length > 2)
+            {
+                try
+                {
+                    List<Articulo> listaFiltrada = articuloNegocio.filtroRapido(txtFiltro.Text);
+                    dgvArticulos.DataSource = listaFiltrada;
+                    dgvArticulos.DataBind();
+                }
+                catch (Exception ex)
+                {
 
+                    throw ex;
+                }
+            }else if (txtFiltro.Text.Length == 0)
+            {
+                List<Articulo> listaFiltrada = articuloNegocio.listar();
+                dgvArticulos.DataSource = listaFiltrada;
+                dgvArticulos.DataBind();
+            }
+            if (cbFiltroAvanzado.Checked)
+            {
+                txtFiltro.Text = "";
+            }
         }
 
         protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
@@ -86,6 +113,7 @@ namespace TPFinalNivel3FigueroaJuanSebastián
         {
             try
             {
+                string nombre = txtNombre.Text;
                 string categoria = ddlCategoria.SelectedItem.Text;
                 string marca = ddlMarca.SelectedItem.Text;
                 decimal precioMin = 0;
@@ -99,7 +127,7 @@ namespace TPFinalNivel3FigueroaJuanSebastián
                     precioMax = decimal.Parse((txtPrecioMaximo.Text.ToString()));
                 }
                 ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-                List<Articulo> listaFiltrada = articuloNegocio.filtrar(categoria, marca, precioMin, precioMax);
+                List<Articulo> listaFiltrada = articuloNegocio.filtrar(nombre, categoria, marca, precioMin, precioMax);
                 dgvArticulos.DataSource = listaFiltrada;
                 dgvArticulos.DataBind();
             }

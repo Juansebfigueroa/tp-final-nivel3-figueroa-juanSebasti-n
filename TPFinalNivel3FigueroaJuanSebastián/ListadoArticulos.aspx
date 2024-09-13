@@ -7,59 +7,76 @@
     <h1>Listado de articulos</h1>
     <div class="container text-center">
 
+        <h2>Filtrar</h2>
         <div class="col">
-            <div class="col-6">
-                <div class="mb-3">
-                    <h2>Filtrar</h2>
-                    <label>Nombre:</label>
-                    <asp:TextBox runat="server" ID="txtFiltro" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtFiltro_TextChanged" />
-                </div>
-            </div>
-        </div>
-
-
-
-        <%-- Filtro avanzado --%>
-        <div class="row">
-            <div class="col-3">
-                <div class="mb-3">
-                    <asp:Label Text="Categoria" runat="server" />
-                    <asp:DropDownList runat="server" AutoPostBack="true" CssClass="form-control" ID="ddlCategoria" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged">
-                        <asp:ListItem Text="Todas" />
-                    </asp:DropDownList>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="mb-3">
-                    <asp:Label Text="Marca" runat="server" />
-                    <asp:DropDownList runat="server" ID="ddlMarca" CssClass="form-control" OnSelectedIndexChanged="ddlMarca_SelectedIndexChanged">
-                        <asp:ListItem Text="Todas" />
-                    </asp:DropDownList>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="mb-3">
-                    <asp:Label Text="Precio mínimo" runat="server" />
-                    <asp:TextBox runat="server" ID="txtPrecioMinimo" CssClass="form-control" />
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="mb-3">
-                    <asp:Label Text="Precio máximo" runat="server" />
-                    <asp:TextBox runat="server" ID="txtPrecioMaximo" CssClass="form-control" />
-                </div>
-
-
-                <div class="col-3">
+            <div class="row">
+                <div class="col-6">
                     <div class="mb-3">
-                        <asp:Button Text="Buscar" runat="server" CssClass="btn btn-primary" ID="btnBuscar" OnClick="btnBuscar_Click" />
-                        <asp:Button Text="Reestablecer" CssClass="btn btn-warning" ID="btnReestablecer" OnClick="btnReestablecer_Click" runat="server" />
+                        <label>Nombre:</label>
+                        <asp:TextBox runat="server" ID="txtFiltro" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtFiltro_TextChanged" />
                     </div>
                 </div>
 
+                <div class="col-6">
+                    <div class="mb-3">
+                        <asp:CheckBox ID="cbFiltroAvanzado" AutoPostBack="true" Text="Filtro avanzado" runat="server" />
+                    </div>
+                    <div class="mb-3">
+                        <asp:Button Text="Reestablecer filtro" CssClass="btn btn-warning" ID="btnReestablecer" OnClick="btnReestablecer_Click" runat="server" />
+
+                    </div>    
+                </div>
             </div>
         </div>
 
+        <%-- Filtro avanzado --%>
+        <%if (cbFiltroAvanzado.Checked)
+            { %>
+            <div class="row">
+                <div class="col-2">
+                    <div class="mb-3">
+                        <asp:Label Text="Nombre" runat="server" />
+                        <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server" />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="mb-3">
+                        <asp:Label Text="Categoria" runat="server" />
+                        <asp:DropDownList runat="server" CssClass="form-control" ID="ddlCategoria" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged">
+                            <asp:ListItem Text="Todas" />
+                        </asp:DropDownList>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="mb-3">
+                        <asp:Label Text="Marca" runat="server" />
+                        <asp:DropDownList runat="server" ID="ddlMarca" CssClass="form-control" OnSelectedIndexChanged="ddlMarca_SelectedIndexChanged">
+                            <asp:ListItem Text="Todas" />
+                        </asp:DropDownList>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="mb-3">
+                        <asp:Label Text="Precio mínimo" runat="server" />
+                        <asp:TextBox runat="server" ID="txtPrecioMinimo" CssClass="form-control" />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="mb-3">
+                        <asp:Label Text="Precio máximo" runat="server" />
+                        <asp:TextBox runat="server" ID="txtPrecioMaximo" CssClass="form-control" />
+                    </div>
+
+                    <div class="col-5">
+                        <div class="mb-2">
+                            <asp:Button Text="Buscar" runat="server" CssClass="btn btn-primary" ID="btnBuscar" OnClick="btnBuscar_Click" />
+                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        <%} %>
 
         <div class="col">
 

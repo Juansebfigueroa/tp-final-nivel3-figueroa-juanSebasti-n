@@ -24,7 +24,9 @@ namespace TPFinalNivel3FigueroaJuanSebastián
             }
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
 
-            dgvArticulos.DataSource = articuloNegocio.listar();
+            //Actualizamos para que la lista de articulos se guarde en session antes de cargarse a la dgv
+            Session.Add("listaArticulos", articuloNegocio.listar());
+            dgvArticulos.DataSource = Session["listaArticulos"];
             dgvArticulos.DataBind();
             //carga de los ddl para el filtrado
             CategoriaNegocio categoriaNeg = new CategoriaNegocio();
@@ -73,30 +75,37 @@ namespace TPFinalNivel3FigueroaJuanSebastián
 
         protected void txtFiltro_TextChanged(object sender, EventArgs e)
         {
-            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-            if(txtFiltro.Text.Length > 2)
-            {
-                try
-                {
-                    List<Articulo> listaFiltrada = articuloNegocio.filtroRapido(txtFiltro.Text);
-                    dgvArticulos.DataSource = listaFiltrada;
-                    dgvArticulos.DataBind();
-                }
-                catch (Exception ex)
-                {
+            List<Articulo> lista = (List<Articulo>)Session["listaArticulos"];
+            List<Articulo> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()));
+            dgvArticulos.DataSource = listaFiltrada;
+            dgvArticulos.DataBind();
 
-                    throw ex;
-                }
-            }else if (txtFiltro.Text.Length == 0)
-            {
-                List<Articulo> listaFiltrada = articuloNegocio.listar();
-                dgvArticulos.DataSource = listaFiltrada;
-                dgvArticulos.DataBind();
-            }
-            if (cbFiltroAvanzado.Checked)
-            {
-                txtFiltro.Text = "";
-            }
+            //Aca comento esta parte y la reemplazo con un filtrado que no vaya a la DB para que sea más rápido
+            //ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            //if (txtFiltro.Text.Length > 2)
+            //{
+            //    try
+            //    {
+            //        List<Articulo> listaFiltrada = articuloNegocio.filtroRapido(txtFiltro.Text);
+            //        dgvArticulos.DataSource = listaFiltrada;
+            //        dgvArticulos.DataBind();
+            //    }
+            //    catch (Exception ex)
+            //    {
+
+            //        throw ex;
+            //    }
+            //}
+            //else if (txtFiltro.Text.Length == 0)
+            //{
+            //    List<Articulo> listaFiltrada = articuloNegocio.listar();
+            //    dgvArticulos.DataSource = listaFiltrada;
+            //    dgvArticulos.DataBind();
+            //}
+            //if (cbFiltroAvanzado.Checked)
+            //{
+            //    txtFiltro.Text = "";
+            //}
         }
 
         protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
